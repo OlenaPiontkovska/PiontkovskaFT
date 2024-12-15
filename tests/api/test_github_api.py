@@ -26,4 +26,8 @@ def test_repo_cannot_be_found(github_api):
 def test_repo_with_single_char_be_found(github_api):
     r = github_api.search_repo('s')
     assert r['total_count'] != 0
-    
+
+@pytest.mark.api 
+def test_emoji_exists(github_api):
+    emoji = github_api.search_emoji()
+    assert emoji["abcd"] == "https://github.githubassets.com/images/icons/emoji/unicode/1f521.png?v8"    
